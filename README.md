@@ -6,12 +6,9 @@ Exporting csv from rpivotTable on Shiny App
 
 ### Prerequisites
 
-library(rpivotTable)
-
-library(htmlwidget)
-
-library(readr)
-
-library(jsonlite)
+library(rpivotTable)  
+library(htmlwidget)  
+library(readr)  
+library(jsonlite)  
 
 
