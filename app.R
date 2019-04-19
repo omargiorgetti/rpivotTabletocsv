@@ -1,9 +1,4 @@
-#library(dplyr)
-#library(readr)
 library(shiny)
-#library(openxlsx)
-#library(shinyjs)
-#library(rvest)
 
 source("function.R")
 #ui
