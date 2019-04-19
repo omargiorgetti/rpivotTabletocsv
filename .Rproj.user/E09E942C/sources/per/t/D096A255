@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1553863134764.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "900127405",
+    "id" : "D096A255",
+    "lastKnownWriteTime" : 1555679781,
+    "last_content_update" : 1555679781161,
+    "path" : "~/Documenti/R/progetti/pivot/function.R",
+    "project_path" : "function.R",
+    "properties" : {
+        "cursorPosition" : "12,21",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
