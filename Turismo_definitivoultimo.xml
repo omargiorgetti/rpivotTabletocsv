@@ -1,0 +1,200 @@
+<Schema name="BD_TURISMO">
+  <Cube name="Consistenza" caption="Strutture Ricettive" visible="true" cache="true" enabled="true">
+    <Table name="MQT_F_CONSISTENZA" schema="DM_TURISMO">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="ANNO_MESE" highCardinality="false" name="Anno">
+      <Hierarchy name="Anno" visible="true" hasAll="true" allMemberName="Tutti gli anni" allLevelName="Totale anni dal 2005" primaryKey="ANNO_MESE">
+        <Table name="MQT_DIM_TEMPO" schema="DM_TURISMO">
+        </Table>
+        <Level name="Anno" visible="true" column="ANNO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="COD_ISTAT_COMUNE" highCardinality="false" name="Territorio">
+      <Hierarchy name="Territorio" visible="true" hasAll="true" allMemberName="Toscana" allLevelName="Totale regione" primaryKey="COD_ISTAT_COMUNE">
+        <Table name="SPAZIO" schema="DM_TURISMO">
+        </Table>
+        <Level name="Provincia" visible="true" column="DES_PROVINCIA" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Comune" visible="true" column="DES_COMUNE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Codici comunali Istat" visible="true" column="COD_ISTAT_COMUNE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="CODICE_STRUTTURA_STELLE" highCardinality="false" name="Tipo struttura">
+      <Hierarchy name="Tipologia" visible="true" hasAll="true" allMemberName="Tutte le tipologie ricettive" allLevelName="Totale strutture" primaryKey="COD_TIPOLOGIA_STELLE">
+        <Table name="MQT_TIPOLOGIA" schema="DM_TURISMO">
+        </Table>
+        <Level name="Classificazione macro" visible="true" column="DES_TIPOLOGIA_ST_MACRO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Classificazione Istat" visible="true" column="COD_TIPOLOGIA_MACRO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Classificazione micro" visible="true" column="DES_TIPOLOGIA_ST" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="COD_ISTAT_COMUNE" highCardinality="false" name="Risorsa turistica">
+      <Hierarchy name="Risorsa" visible="true" hasAll="true" allMemberName="Tutte le risorse" allLevelName="Totale risorse" primaryKey="COD_ISTAT_COMUNE">
+        <Table name="SPAZIO" schema="DM_TURISMO">
+        </Table>
+        <Level name="Risorsa turistica" visible="true" column="COD_RISORSA_AGGREGATO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="DES_RISORSA_AGGREGATO">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="letti" column="NRO_LETTI" datatype="Numeric" aggregator="sum" visible="false">
+    </Measure>
+    <Measure name="camere" column="NRO_CAMERE" datatype="Numeric" aggregator="sum" visible="false">
+    </Measure>
+    <Measure name="esercizi" column="CODICE_STRUTTURA" datatype="Numeric" aggregator="count" visible="false">
+    </Measure>
+    <CalculatedMember name="Esercizi (valori medi)" formatString="#,##0" formula="[Measures].[esercizi] / 12" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Letti (valori medi)" formatString="#,##0" formula="[Measures].[letti] / 12" dimension="Measures" visible="true">
+    </CalculatedMember>
+    <CalculatedMember name="Camere (valori medi)" formatString="#,##0" formula="[Measures].[camere] / 12" dimension="Measures" visible="true">
+    </CalculatedMember>
+  </Cube>
+  <Cube name="Movimento1" caption="Movimento dei clienti" visible="true" cache="true" enabled="true">
+    <Table name="MQT_F_MOVIMENTO" schema="DM_TURISMO">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="ANNO_MESE" highCardinality="false" name="Anno">
+      <Hierarchy name="Anno" visible="true" hasAll="true" allMemberName="Tutti gli anni" allLevelName="Totale anni dal 2005" primaryKey="ANNO_MESE">
+        <Table name="MQT_DIM_TEMPO" schema="DM_TURISMO">
+        </Table>
+        <Level name="Anno" visible="true" column="ANNO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Trimestre" visible="true" column="TRIMESTRE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Mese" visible="true" column="MESE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="COD_ISTAT_COMUNE" highCardinality="false" name="Territorio">
+      <Hierarchy name="Territorio" visible="true" hasAll="true" allMemberName="Toscana" allLevelName="Totale regione" primaryKey="COD_ISTAT_COMUNE">
+        <Table name="SPAZIO" schema="DM_TURISMO">
+        </Table>
+        <Level name="Provincia" visible="true" column="DES_PROVINCIA" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="CODICE_STRUTTURA_STELLE" highCardinality="false" name="Tipo struttura">
+      <Hierarchy name="Tipologia" visible="true" hasAll="true" allMemberName="Tutte le tipologie ricettive" allLevelName="Totale strutture" primaryKey="COD_TIPOLOGIA_STELLE">
+        <Table name="MQT_TIPOLOGIA" schema="DM_TURISMO">
+        </Table>
+        <Level name="Classificazione macro" visible="true" column="DES_TIPOLOGIA_ST_MACRO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Classificazione Istat" visible="true" column="COD_TIPOLOGIA_MACRO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="CODICE_REGIONE_PAESE" highCardinality="false" name="Provenienza dei clienti">
+      <Hierarchy name="Provenienza" visible="true" hasAll="true" allMemberName="Tutte le provenienze" allLevelName="Totale clienti" primaryKey="COD_REGIONEPAESE">
+        <View alias="Provenienza_Corrente">
+          <SQL dialect="generic">
+            <![CDATA[SELECT
+    AAAAMM_INI,
+    AAAAMM_FIN,
+    COD_REGIONEPAESE,
+    DES_REGIONEPAESE,
+    COD_AREA_MACRO,
+    DES_AREA_MACRO,
+    ITALIANO_STRANIERO,
+    COD_MOVC,
+    DES_MOVC
+FROM
+    DM_TURISMO.PROVENIENZA 
+    where aaaamm_fin='999999']]>
+          </SQL>
+        </View>
+        <Level name="Italiani-Stranieri" visible="true" column="ITALIANO_STRANIERO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Paese di provenienza" visible="true" column="DES_REGIONEPAESE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="COD_ISTAT_COMUNE" highCardinality="false" name="Risorsa turistica">
+      <Hierarchy name="Risorsa" visible="true" hasAll="true" allMemberName="Tutte le risorse" allLevelName="Totale risorse" primaryKey="COD_ISTAT_COMUNE">
+        <Table name="SPAZIO" schema="DM_TURISMO">
+        </Table>
+        <Level name="Risorsa turistica" visible="true" column="COD_RISORSA_AGGREGATO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="DES_RISORSA_AGGREGATO">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="Arrivi" column="NRO_ARRIVI" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Presenze" column="NRO_PRESENZE" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+  <Cube name="Movimento2" caption="Movimento di dettaglio comunale" visible="true" cache="true" enabled="true">
+    <Table name="MQT_F_MOVIMENTO" schema="DM_TURISMO">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="ANNO_MESE" highCardinality="false" name="Anno">
+      <Hierarchy name="Anno" visible="true" hasAll="true" allMemberName="Tutti gli anni" allLevelName="Totale anni dal 2005" primaryKey="ANNO_MESE">
+        <Table name="MQT_DIM_TEMPO" schema="DM_TURISMO">
+        </Table>
+        <Level name="Anno" visible="true" column="ANNO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Trimestre" visible="true" column="TRIMESTRE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="COD_ISTAT_COMUNE" highCardinality="false" name="Territorio">
+      <Hierarchy name="Territorio" visible="true" hasAll="true" allMemberName="Toscana" allLevelName="Totale regione" primaryKey="COD_ISTAT_COMUNE">
+        <Table name="SPAZIO" schema="DM_TURISMO">
+        </Table>
+        <Level name="Comune" visible="true" column="DES_COMUNE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Codici comunali Istat" visible="true" column="COD_ISTAT_COMUNE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="CODICE_STRUTTURA_STELLE" highCardinality="false" name="Tipo struttura">
+      <Hierarchy name="Tipologia" visible="true" hasAll="true" allMemberName="Tutte le tipologie ricettive" allLevelName="Totale strutture" primaryKey="COD_TIPOLOGIA_STELLE">
+        <Table name="MQT_TIPOLOGIA" schema="DM_TURISMO">
+        </Table>
+        <Level name="Classificazione macro" visible="true" column="DES_TIPOLOGIA_ST_MACRO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="CODICE_REGIONE_PAESE" highCardinality="false" name="Provenienza dei clienti">
+      <Hierarchy name="Provenienza" visible="true" hasAll="true" allMemberName="Tutte le provenienze" allLevelName="Totale clienti" primaryKey="COD_REGIONEPAESE">
+        <View alias="Provenienza_Corrente">
+          <SQL dialect="generic">
+            <![CDATA[SELECT
+    AAAAMM_INI,
+    AAAAMM_FIN,
+    COD_REGIONEPAESE,
+    DES_REGIONEPAESE,
+    COD_AREA_MACRO,
+    DES_AREA_MACRO,
+    ITALIANO_STRANIERO,
+    COD_MOVC,
+    DES_MOVC
+FROM
+    DM_TURISMO.PROVENIENZA 
+    where aaaamm_fin='999999']]>
+          </SQL>
+        </View>
+        <Level name="Italiani-Stranieri" visible="true" column="ITALIANO_STRANIERO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Area di provenienza" visible="true" column="DES_AREA_MACRO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Paese di provenienza" visible="true" column="DES_REGIONEPAESE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="COD_ISTAT_COMUNE" highCardinality="false" name="Risorsa turistica">
+      <Hierarchy name="Risorsa" visible="true" hasAll="true" allMemberName="Tutte le risorse" allLevelName="Totale risorse" primaryKey="COD_ISTAT_COMUNE">
+        <Table name="SPAZIO" schema="DM_TURISMO">
+        </Table>
+        <Level name="Risorsa turistica" visible="true" column="COD_RISORSA_AGGREGATO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="DES_RISORSA_AGGREGATO">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="Arrivi" column="NRO_ARRIVI" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Presenze" column="NRO_PRESENZE" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+</Schema>

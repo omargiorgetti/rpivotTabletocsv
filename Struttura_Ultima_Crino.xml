@@ -1,0 +1,192 @@
+<Schema name="Demografia">
+  <Dimension visible="true" highCardinality="false" name="Ambiti Territoriali">
+    <Hierarchy name="PROVINCIA" visible="true" hasAll="true" allMemberName="Toscana" allLevelName="REGIONE" primaryKey="SK_COMUNE" primaryKeyTable="L2_DM_COMUNE">
+      <Join leftKey="SK_PROVINCIA" rightKey="SK_PROVINCIA">
+        <Table name="L2_DM_COMUNE_OXI_BI" schema="DEMOGRAFIA" alias="L2_DM_COMUNE">
+        </Table>
+        <Table name="L2_DM_PROVINCIA" schema="DEMOGRAFIA">
+        </Table>
+      </Join>
+      <Level name="PROVINCIA" visible="true" table="L2_DM_PROVINCIA" column="DENOMINAZIONE_PROV" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="COMUNE" visible="true" table="L2_DM_COMUNE" column="DENOMINAZIONE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        <Annotations>
+          <Annotation name="Data.Role">
+            <![CDATA[Geography]]>
+          </Annotation>
+          <Annotation name="Geo.Role">
+            <![CDATA[city]]>
+          </Annotation>
+        </Annotations>
+      </Level>
+      <Level name="Cod Istat Comuni" visible="true" table="L2_DM_COMUNE" column="CD_COMUNE_ISTAT_ALFA" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" description="Cod Istat Comuni">
+      </Level>
+      <Level name="Cod Catastale Comuni" visible="true" table="L2_DM_COMUNE" column="CD_COMUNE_CATAST" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" description="Cod Catastale Comuni">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="AREA VASTA" visible="true" hasAll="true" allMemberName="Toscana" allLevelName="REGIONE" primaryKey="SK_COMUNE">
+      <Table name="L2_DM_COMUNE_OXI_BI" schema="DEMOGRAFIA" alias="L2_DM_COMUNE">
+      </Table>
+      <Level name="AREA VASTA" visible="true" column="AREA_VASTA" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="ASL" visible="true" column="ASL" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="ZONA" visible="true" column="ZONA" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="COMUNE" visible="true" column="DENOMINAZIONE_SANITA" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Cod Istat Comuni" visible="true" column="CD_COMUNE_ISTAT_ALFA" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" description="Cod Istat Comuni">
+      </Level>
+      <Level name="Cod Catastale Comuni" visible="true" column="CD_COMUNE_CATAST" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" description="Cod Catastale Comuni">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="CENTRO IMPIEGO" visible="true" hasAll="true" allMemberName="Toscana" allLevelName="REGIONE" primaryKey="SK_COMUNE">
+      <Table name="L2_DM_COMUNE_OXI_BI" schema="DEMOGRAFIA" alias="L2_DM_COMUNE">
+      </Table>
+      <Level name="CENTRO IMPIEGO" visible="true" column="CENTRO_IMPIEGO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="COMUNE" visible="true" column="DENOMINAZIONE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Cod Istat Comuni" visible="true" column="CD_COMUNE_ISTAT_ALFA" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" description="Cod Istat Comuni">
+      </Level>
+      <Level name="Cod Catastale Comuni" visible="true" column="CD_COMUNE_CATAST" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" description="Cod Catastale Comuni">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="SISTEMA ECONOMICO LOCALE" visible="true" hasAll="true" allMemberName="Toscana" allLevelName="REGIONE" primaryKey="SK_COMUNE">
+      <Table name="L2_DM_COMUNE_OXI_BI" schema="DEMOGRAFIA" alias="L2_DM_COMUNE">
+      </Table>
+      <Level name="SEL" visible="true" column="SISTEMA_ECONOMICO_LOCALE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" description="Sistema Economico Locale">
+      </Level>
+      <Level name="COMUNE" visible="true" column="DENOMINAZIONE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Cod Istat Comuni" visible="true" column="CD_COMUNE_ISTAT_ALFA" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" description="Cod Istat Comuni">
+      </Level>
+      <Level name="Cod Catastale Comuni" visible="true" column="CD_COMUNE_CATAST" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" description="Cod Catastale Comuni">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="UNIONE COMUNI" visible="true" hasAll="true" allMemberName="Toscana" allLevelName="REGIONE" primaryKey="SK_COMUNE">
+      <Table name="L2_DM_COMUNE_OXI_BI" schema="DEMOGRAFIA" alias="L2_DM_COMUNE">
+      </Table>
+      <Level name="UNIONE COMUNI" visible="true" column="UNIONE_COMUNI" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="COMUNE" visible="true" column="DENOMINAZIONE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Cod Istat Comuni" visible="true" column="CD_COMUNE_ISTAT_ALFA" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" description="Cod Istat Comuni">
+      </Level>
+      <Level name="Cod Catastale Comuni" visible="true" column="CD_COMUNE_CATAST" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" description="Cod Catastale Comuni">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="TimeDimension" visible="true" highCardinality="false" name="Anno">
+    <Hierarchy name="ANNO" visible="true" hasAll="true" allLevelName="TOTALE" primaryKey="SK_TEMPO">
+      <Table name="L2_DM_TEMPO" schema="DEMOGRAFIA">
+      </Table>
+      <Level name="ANNO" visible="true" column="ANNO" type="String" uniqueMembers="false" levelType="TimeYears" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension visible="true" highCardinality="false" name="Classi di Eta">
+    <Hierarchy name="CLASSE QUINQUENNALE" visible="true" hasAll="true" allLevelName="TOTALE" primaryKey="SK_ETA" description="0-4; 5-9; ... ; 80-84; 85-89; 90 e pi&#249;">
+      <Table name="L2_DM_ETA_BI" schema="DEMOGRAFIA">
+      </Table>
+      <Level name="CLASSE_QUINQUENNALE" visible="true" column="CLASSE_QUINQUENNALE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="CLASSE DECENNALE" visible="true" hasAll="true" allLevelName="TOTALE" primaryKey="SK_ETA" description="0-9; 10-19; ... ; 80-89; 90 e piu">
+      <Table name="L2_DM_ETA_BI" schema="DEMOGRAFIA">
+      </Table>
+      <Level name="CLASSE_DECENNALE" visible="true" column="CLASSE_DECENNALE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="PRESCUOLA" visible="true" hasAll="true" allLevelName="TOTALE" primaryKey="SK_ETA" description="0-2; 3-5">
+      <Table name="L2_DM_ETA_BI" schema="DEMOGRAFIA">
+      </Table>
+      <Level name="PRESCUOLA" visible="true" column="PRESCUOLA" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="IfBlankName">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="SCUOLA OBBLIGO" visible="true" hasAll="true" allLevelName="TOTALE" primaryKey="SK_ETA">
+      <Table name="L2_DM_ETA_BI" schema="DEMOGRAFIA">
+      </Table>
+      <Level name="SCUOLA OBBLIGO" visible="true" column="SCUOLA_OBBLIGO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="IfBlankName">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="MINORI ADULTI" visible="true" hasAll="true" allLevelName="TOTALE" primaryKey="SK_ETA" description="&#60;18; &#62;=18">
+      <Table name="L2_DM_ETA_BI" schema="DEMOGRAFIA">
+      </Table>
+      <Level name="MINORI ADULTI" visible="true" column="MINORI_ADULTI" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="IfBlankName">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="TEENAGER" visible="true" hasAll="true" allLevelName="TOTALE" primaryKey="SK_ETA" description="13-19;">
+      <Table name="L2_DM_ETA_BI" schema="DEMOGRAFIA">
+      </Table>
+      <Level name="TEENAGER" visible="true" column="TEENAGER" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="IfBlankName">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="POPOLAZIONE FECONDA" visible="true" hasAll="true" allLevelName="TOTALE" primaryKey="SK_ETA">
+      <Table name="L2_DM_ETA_BI" schema="DEMOGRAFIA">
+      </Table>
+      <Level name="POPOLAZIONE FECONDA" visible="true" column="POPOLAZIONE_FECONDA" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="IfBlankName">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="STRUTTURA POPOLAZIONE" visible="true" hasAll="true" allLevelName="TOTALE" primaryKey="SK_ETA" description="0-14; 15-64; &#62;= 65">
+      <Table name="L2_DM_ETA_BI" schema="DEMOGRAFIA">
+      </Table>
+      <Level name="STRUTTURA POPOLAZIONE" visible="true" column="STRUTTURA_POPOLAZIONE" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="IfBlankName">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="OVER 60" visible="true" hasAll="true" allLevelName="TOTALE" primaryKey="SK_ETA" description="60+">
+      <Table name="L2_DM_ETA_BI" schema="DEMOGRAFIA">
+      </Table>
+      <Level name="OVER 60" visible="true" column="OVER_60" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="IfBlankName">
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="OVER 75" visible="true" hasAll="true" allLevelName="TOTALE" primaryKey="SK_ETA">
+      <Table name="L2_DM_ETA_BI" schema="DEMOGRAFIA">
+      </Table>
+      <Level name="OVER 75" visible="true" column="OVER_75" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="IfBlankName">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Classi di Eta Personalizzabili" description="Da utilizzare per costruire delle classi di eta personalizzate">
+    <Hierarchy name="ANNO" visible="true" hasAll="true" allLevelName="TOTALE" primaryKey="SK_ETA">
+      <Table name="L2_DM_ETA_BI" schema="DEMOGRAFIA">
+      </Table>
+      <Level name="CLASSE SINGOLO ANNO" visible="true" column="ETA" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Cube name="PopTosBI" caption="Popolazione Residente Toscana" visible="true" description="Popolazione Residente Toscana" cache="true" enabled="true">
+    <Table name="L2_FT_POP_TOS_BI" schema="DEMOGRAFIA">
+    </Table>
+    <DimensionUsage source="Ambiti Territoriali" name="Ambiti Territoriali" visible="true" foreignKey="SK_COMUNE" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Classi di Eta" name="Classi di Eta" visible="true" foreignKey="SK_ETA" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Anno" name="Anno" visible="true" foreignKey="SK_TEMPO" highCardinality="false">
+    </DimensionUsage>
+    <Dimension type="StandardDimension" visible="true" foreignKey="SESSO" highCardinality="false" name="Sesso">
+      <Hierarchy name="Sesso" visible="true" hasAll="true" allLevelName="TOTALE" primaryKey="ID">
+        <Table name="L2_DM_SESSO_BI" schema="DEMOGRAFIA">
+        </Table>
+        <Level name="Sesso" visible="true" column="SESSO" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <DimensionUsage source="Classi di Eta Personalizzabili" name="Classi di Eta Personalizzabili" visible="true" foreignKey="SK_ETA" highCardinality="false">
+    </DimensionUsage>
+    <Measure name="RESIDENTI" column="RESIDENTI" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="CELIBI_NUBILI" column="CELIBI_NUBILI" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="CONIUGATI_E" column="CONIUGATI_E" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="DIVORZIATI_E" column="DIVORZIATI_E" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="VEDOVI_E" column="VEDOVI_E" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+  <Role name="M_demografia">
+    <SchemaGrant access="all">
+    </SchemaGrant>
+  </Role>
+</Schema>
